@@ -1,0 +1,23 @@
+{
+  "name": "maploader",
+  "version": "1.0.0",
+  "description": "loading maps for samp",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CnRXomoX/Project-Zombie.git"
+  },
+  "author": "XomoX",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CnRXomoX/Project-Zombie/issues"
+  },
+  "homepage": "https://github.com/CnRXomoX/Project-Zombie#readme",
+  "dependencies": {
+    "samp": "^1.0.0",
+    "samp-node-lib": "^1.0.4"
+  }
+}
