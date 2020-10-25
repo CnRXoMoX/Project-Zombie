@@ -22,6 +22,7 @@
 #include <utils>
 #include <database>
 #include <account>
+#include <player>
 #include <chat>
 #include <admin>
 #include <systems>
@@ -34,6 +35,7 @@ public OnGameModeInit()
     SendRconCommand("gamemodetext "SERVER_MODE"");
 	SendRconCommand("language "SERVER_LANGUAGE"");
     SendRconCommand("weburl "SERVER_WEBSITE"");
+    Logger_Log("Test?");
     return 1;
 }
 

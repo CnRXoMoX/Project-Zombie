@@ -66,7 +66,7 @@ void:Account_PromptLogin(playerid, const password[], len = sizeof(password)) {
             PlayerAttempts[playerid] = 0;
             Account_NotifySuccess(playerid);
             CallLocalFunction("OnPlayerLogin", "i", playerid);
-            
+            defer ForceSpawnPlayer(playerid);
         }
         BCrypt_CheckInline(inputtext, gPlayerHash[playerid], using inline OnPasswordVerify);
     }
@@ -101,4 +101,11 @@ stock Player_IsLoggedIn(playerid) {
 
 stock Player_SetLoginStatus(playerid, bool:status) {
     return gPlayerLoginStatus[playerid] = status;
+}
+
+timer void:ForceSpawnPlayer[GetPlayerPing(playerid)](playerid)
+{
+    SetSpawnInfo(playerid, 0, 0, 0.0, 0.0, 0.0, 0.0, 0, 0, 0, 0, 0, 0);
+
+    TogglePlayerSpectating(playerid, false);
 }

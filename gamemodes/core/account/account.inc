@@ -1,6 +1,6 @@
 #include <account_create>
 #include <account_login>
-
+#include <account_stats>
 #if SETUP_TABLE
     #include <account_setup-player-table>
     #include <account_setup-stats>
@@ -21,6 +21,7 @@ hook OnMySQLConnected()
 
 hook OnPlayerConnect(playerid) {
     Player_UID[playerid] = 0;
+    TogglePlayerSpectating(playerid, true);
     return 1;
 }
 

@@ -40,8 +40,5 @@ This is where we will put javascript for samp where can we load maps and loots
 # Credits
 | Name |           Library                |
 |------|----------------------------------|
-| Southclaws / ScavageSurvive | Usefull
-Snipets from this like loot spawns and
-loot loader                               |
-| pawn-lang | The YSI_Includes helped through
-out the code so much                      |
+| Southclaws |       Scavage and Survive  |
+| pawn-lang | The YSI_Includes helped through out the code so much |

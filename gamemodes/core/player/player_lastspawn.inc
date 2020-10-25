@@ -1,4 +1,4 @@
-#include <YSI_Includes\y_hooks>
+#include <YSI_Coding\y_hooks>
 
 static
     Float:gPlayerPos[MAX_PLAYERS][4],
@@ -52,11 +52,11 @@ hook OnPlayerLogin(playerid)
         MySQL_BindResultFloat(stmt_playerLoadPos, 2, pos[2]);
         MySQL_BindResultFloat(stmt_playerLoadPos, 3, pos[3]);
         
-        if(MySQL_Statement_FetchRow(stmt_checkPlayer)) {
+        if(MySQL_Statement_FetchRow(stmt_playerLoadPos)) {
             gPlayerPos[playerid][0] = pos[0];
             gPlayerPos[playerid][1] = pos[1];
             gPlayerPos[playerid][2] = pos[2];
-            gPlayerPos[playerid][3] = pos[4];
+            gPlayerPos[playerid][3] = pos[3];
             gPlayerJustJoined[playerid] = true;
             Player_DeleteSavedPos(playerid);
         }
@@ -71,7 +71,7 @@ hook OnPlayerSpawn(playerid)
     if(!Player_New(playerid) && gPlayerJustJoined[playerid])
     {
         SetPlayerPos(playerid, gPlayerPos[playerid][0], gPlayerPos[playerid][1], gPlayerPos[playerid][2]);
-        SetPlayerFacingAngle(playerid, gPlayerPos[3]);
+        SetPlayerFacingAngle(playerid, gPlayerPos[playerid][3]);
     }
     return 1;
 }

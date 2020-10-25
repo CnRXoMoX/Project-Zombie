@@ -9,6 +9,7 @@ hook OnMySQLConnected()
             kills mediumint(8) NOT NULL DEFAULT '0', \
             deaths mediumint(8) NOT NULL DEFAULT '0', \
             coins bigint(20) NOT NULL DEFAULT '0', \
+            score bigint(20) NOT NULL DEFAULT '0', \
             skin smallint(4) NOT NULL DEFAULT '0', \
             PRIMARY KEY (u_id), \
             FOREIGN KEY (u_id) REFERENCES players(u_id) \

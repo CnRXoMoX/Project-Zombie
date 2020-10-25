@@ -58,11 +58,11 @@ stock Account_InsertToDatabase(playerid, const hash[]) {
         Player_SetAccountID(playerid, cache_insert_id());
 
         static const
-            msg_content[] = "Hello ~p~%p, ~w~You're now registered to DayZ and Automatically logged in";
+            msg_content[] = "Hello %p, You're now registered to DayZ and Automatically logged in";
         
         CallLocalFunction("OnPlayerRegister", "i", playerid);
         Player_SetNew(playerid, true);
-        TogglePlayerSpectating(playerid, false);
+        defer ForceSpawnPlayer(playerid);
         SendServerMsgF(playerid, msg_content, playerid);
     }
 
