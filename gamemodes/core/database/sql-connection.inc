@@ -19,19 +19,19 @@ hook OnGameModeInit()
 
     if(MySQL_Handler == MYSQL_INVALID_HANDLE || mysql_errno(MySQL_Handler) != 0)
     {
-        fatal("MySQL Failed to connect shutting down!");
+        Logger_Fatal("MySQL Failed to connect shutting down!");
         SendRconCommand("exit");
         return 1;
     }
 
-    log("MySQL Successfuly Loaded");
+    Logger_Log("MySQL Successfuly Loaded");
     CallLocalFunction("OnMySQLConnected", "");
     return 1;
 }
 
 hook OnGameModeExit()
 {
-    log("MySQL Shut down");
+    Logger_Log("MySQL Shut down");
     CallLocalFunction("MySQLPreClose", "");
     mysql_close(MySQL_Handler);
     return 1;

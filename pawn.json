@@ -19,7 +19,8 @@
 		"samp-incognito/samp-streamer-plugin:v2.9.4",
 		"kristoisberg/samp-map-zones",
 		"maddinat0r/samp-discord-connector:v0.3.2",
-		"AmyrAhmady/samp-node"
+		"AmyrAhmady/samp-node:1.1.0",
+		"Southclaws/samp-fsutil:1.3.0"
 	],
 	"local": true,
 	"runtime": {
@@ -77,6 +78,9 @@
 				"gamemodes/core",
 				"gamemodes/core/database",
 				"gamemodes/core/account",
+				"gamemodes/core/systems",
+				"gamemodes/core/systems/system_loot",
+				"gamemodes/core/systems/system_player-inventory",
 				"gamemodes/core/chat",
 				"gamemodes/core/admin",
 				"gamemodes/core/player",

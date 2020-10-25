@@ -3,6 +3,6 @@
     "enable_resources": true,
     "resources_path": "samp-node",
     "resources": [
-        "maploader"
+        "musics"
     ]
 }

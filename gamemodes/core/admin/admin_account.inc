@@ -109,7 +109,7 @@ public OnRowsCheck()
     if(rows)
     {
         mysql_tquery(MySQL_GetHandle(), "DELETE FROM admins WHERE admin_level = 0");
-        log("Pruning all Admin level 0...");
+        Logger_Log("Pruning all Admin level 0...");
     }
 }
 
@@ -125,4 +125,22 @@ stock Player_SetAdminLevel(playerid, level)
 stock Player_GetAdminLevel(playerid)
 {
     return gPlayerAdminLevel[playerid];
+}
+
+stock SendAdminCmdUsage(playerid, const cmd[], const cmdparam[])
+{
+    //new msg2[250];
+    if(Player_GetAdminLevel(playerid) == 5) {
+        return 0;
+    }
+    foreach(new i : Player)
+    {
+        if (i != INVALID_PLAYER_ID && Player_GetAdminLevel(i) > 0)
+        {
+            SendMsgF(i, COLOR_LIGHTGREEN, "[ADMINCMD]: %p (%d) used %s %s", playerid, playerid, cmd, cmdparam);
+        }
+    }
+    //format(msg2, sizeof(msg2), "[ADMINCOMMAND]:%p (%d) used %s %s", playerid, playerid, cmd, cmdparam);
+    //DCC_SendChannelMessage(cmdlogs_Discord_Chat, msg2);
+    return 1;
 }

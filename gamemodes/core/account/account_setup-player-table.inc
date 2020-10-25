@@ -14,6 +14,6 @@ hook OnMySQLConnected()
             UNIQUE KEY (username) \
         )";
     mysql_tquery(MySQL_GetHandle(), query);
-    log("Setting up 'players' table...");
+    Logger_Log("Setting up 'players' table...");
     return 1;
 }

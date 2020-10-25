@@ -7,6 +7,7 @@
 #define SERVER_WEBSITE "discord.gg/samp"
 
 main() {
-    log("gamemode initialised.");
-	logger_debug(PLAYER_DEBUG_HANDLER, true);
+    Logger_Log("gamemode initialised.");
+    Logger_ToggleDebug(PLAYER_DEBUG_HANDLER, true);
+    Logger_ToggleDebug(ADMIN_DEBUG_HANDLER, true);
 }

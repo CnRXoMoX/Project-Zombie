@@ -21,11 +21,10 @@ hook OnMySQLConnected()
 
 hook OnPlayerConnect(playerid) {
     Player_UID[playerid] = 0;
-    defer loginPlayer(playerid);
     return 1;
 }
 
-timer loginPlayer[5000](playerid)
+hook OnPlayerPassedBanCheck(playerid)
 {
     inline const OnDataLoad() {
         new

@@ -16,6 +16,6 @@ hook OnMySQLConnected()
             ON UPDATE RESTRICT \
         )";
     mysql_tquery(MySQL_GetHandle(), query);
-    log("Setting up 'players_stats' table...");
+    Logger_Log("Setting up 'players_stats' table...");
     return 1;
 }

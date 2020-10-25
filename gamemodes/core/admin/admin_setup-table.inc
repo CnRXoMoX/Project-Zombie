@@ -13,6 +13,6 @@ hook OnMySQLConnected()
             ON UPDATE RESTRICT \
         )";
     mysql_tquery(MySQL_GetHandle(), query);
-    log("Setting up 'admins' table...");
+    Logger_Log("Setting up 'admins' table...");
     return 1;
 }

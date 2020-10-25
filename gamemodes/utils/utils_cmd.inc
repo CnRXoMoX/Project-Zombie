@@ -7,7 +7,7 @@
 #define CMD:%1(%2) forward cmd_%1(%2); public cmd_%1(%2)
 
 // ADMIN
-//#define ACMD:[%0]%1(%2,%3) CMD:%1(%2,%3) if (Admin_GetPlayerLevel(%2) < %0) return 0; else
+#define ACMD:[%0]%1(%2,%3) CMD:%1(%2,%3) if (Player_GetAdminLevel(%2) < %0) return 0; else
 
 // TESTER 
 //#define TCMD:%1(%2,%3) CMD:%1(%2,%3) if (!GetPlayerTester(%2) && Admin_GetPlayerLevel(%2) == 0) return 0; else

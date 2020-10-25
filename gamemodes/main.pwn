@@ -1,7 +1,7 @@
 #include <a_samp>
 
-#define SAMP_LOGGER_COMPAT
 #define YSI_YES_HEAP_MALLOC
+#define YSI_NO_OPTIMISATION_MESSAGE
 
 #define SETUP_TABLE     (true)
 
@@ -11,6 +11,7 @@
 #include <YSI_Coding\y_va>
 #include <mysql_prepared>
 #include <logger>
+#include <fsutil>
 #include <formatex>
 #include <YSI_Data\y_iterate>
 #include <YSI_Coding\y_timers>
@@ -23,6 +24,7 @@
 #include <account>
 #include <chat>
 #include <admin>
+#include <systems>
 
 #include <mainmaps>
 
@@ -32,7 +34,6 @@ public OnGameModeInit()
     SendRconCommand("gamemodetext "SERVER_MODE"");
 	SendRconCommand("language "SERVER_LANGUAGE"");
     SendRconCommand("weburl "SERVER_WEBSITE"");
-    log("Hello World!");
     return 1;
 }
 

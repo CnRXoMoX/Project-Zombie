@@ -4,6 +4,6 @@
 
 hook OnGameModeInit()
 {
-    log("[GAMEMODE]: database Loaded");
+    Logger_Log("[GAMEMODE]: database Loaded");
     return 1;
 }

@@ -4,6 +4,6 @@
 
 hook OnGameModeInit()
 {
-    log("[GAMEMODE]: mainmaps loaded!");
+    Logger_Log("[GAMEMODE]: mainmaps loaded!");
     return 1;
 }
