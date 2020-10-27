@@ -42,6 +42,27 @@ hook OnMySQLConnected()
     return 1;
 }
 
+hook MySQLPreClose()
+{
+    foreach(new i : Player)
+    {
+        new Float:pos[4];
+        GetPlayerPos(i, pos[0], pos[1], pos[2]);
+        GetPlayerFacingAngle(i, pos[3]);
+        if(Player_IsLoggedIn(i)) {
+            MySQL_BindInt(stmt_playerSavePos, 0, Player_GetAccountID(i));
+            MySQL_BindFloat(stmt_playerSavePos, 1, pos[0]);
+            MySQL_BindFloat(stmt_playerSavePos, 2, pos[1]);
+            MySQL_BindFloat(stmt_playerSavePos, 3, pos[2]);
+            MySQL_BindFloat(stmt_playerSavePos, 4, pos[3]);
+            MySQL_BindInt(stmt_playerSavePos, 5, GetPlayerInterior(i));
+            MySQL_BindInt(stmt_playerSavePos, 6, GetPlayerVirtualWorld(i));
+            MySQL_ExecuteThreaded(stmt_playerSavePos);
+        }
+    }
+    return 1;
+}
+
 hook OnPlayerLogin(playerid)
 {
     inline const OnPosLoad()

@@ -15,7 +15,7 @@ public RequestToSeeNearbyLoots(playerid, listitem)
         return 0;
     }
 
-    DeleteLoot(itemID);
+    DeleteLoot(lootID);
     GivePlayerItem(playerid, itemID);
     ShowPlayerClosestLoots(playerid);
     return 1;

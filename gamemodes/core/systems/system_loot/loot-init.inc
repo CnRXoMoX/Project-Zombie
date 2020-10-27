@@ -40,6 +40,7 @@ stock CreateRandomLootItem(Float:x, Float:y, Float:z)
 {
     new lootDataID = GetRandomLoot();
     new lootID = Iter_Alloc(gLootIter);
+    loot_Data[lootID][loot_id] = lootID;
     loot_Data[lootID][loot_posX] = x;
     loot_Data[lootID][loot_posY] = y;
     loot_Data[lootID][loot_posZ] = z;
@@ -53,6 +54,7 @@ stock CreateRandomLootItem(Float:x, Float:y, Float:z)
 stock AddStaticLootItem(iId, Float:x, Float:y, Float:z)
 {
     new lootID = Iter_Alloc(gLootIter);
+    loot_Data[lootID][loot_id] = lootID;
     loot_Data[lootID][loot_posX] = x;
     loot_Data[lootID][loot_posY] = y;
     loot_Data[lootID][loot_posZ] = z;

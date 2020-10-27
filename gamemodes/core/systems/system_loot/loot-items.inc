@@ -18,14 +18,14 @@ new
     const lootData[][E_LOOT_DATA] =
 {
     // First Aid Kits
-    { 11747, 80, "Bandage", "PlayerRequestToUseBandage" },
-    { 11738, 80, "Medkit", "PlayerRequestToUseMedkit" },
-    { 2709, 80, "Painkiller", "PlayerRequestToUsePainkiller" },
-    { 1577, 80, "Antibiotics", "PlayerRequestToUseAntibiotics" },
-    { 11736, 80, "Morphine", "PlayerRequestToUseMorphine" },
+    { 11747, 80, "Bandage", "OnPlayerRequestToUseBandage" },
+    { 11738, 80, "Medkit", "OnPlayerRequestToUseMedkit" },
+    { 2709, 80, "Painkiller", "OnPlayerRequestToUsePainkiller" },
+    { 1577, 80, "Antibiotics", "OnPlayerRequestToUseAntibiotics" },
+    { 11736, 80, "Morphine", "OnPlayerRequestToUseMorphine" },
 
     // bags
-    { 19559, 100, "Bag traveler", "PlayerRequestToUseBagTraveler" }
+    { 19559, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" }
 };
 
 stock bool:IsValidItem(iId)
@@ -65,7 +65,7 @@ stock GetItemIDFromName(const iname[])
     {
         if(!strcmp(lootData[i][E_LOOT_NAME], iname, true))
         {
-            return lootData[i][E_LOOT_OBJECT];
+            return i;
         }
     }
     return INVALID_ITEM_ID;

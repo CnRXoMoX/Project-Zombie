@@ -1,15 +1,9 @@
 /* FIRST AID KITS */
-forward PlayerRequestToUseBandage(playerid);
-forward PlayerRequestToUseMedkit(playerid);
-forward PlayerRequestToUsePainkiller(playerid);
-forward PlayerRequestToUseAntibiotics(playerid);
-forward PlayerRequestToUseMorphine(playerid);
+forward OnPlayerRequestToUseBandage(playerid);
+forward OnPlayerRequestToUseMedkit(playerid);
+forward OnPlayerRequestToUsePainkiller(playerid);
+forward OnPlayerRequestToUseAntibiotics(playerid);
+forward OnPlayerRequestToUseMorphine(playerid);
 
 /* BAGS */
-forward PlayerRequestToUseBagTraveler(playerid);
-
-public PlayerRequestToUseMedkit(playerid)
-{
-    SetPlayerArmour(playerid, 100);
-    return 1;
-}
+forward OnPlayerRequestToUseBagTraveler(playerid);

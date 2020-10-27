@@ -167,6 +167,7 @@ public CreateZombies()
 	}
 	return 1;
 }
+
 public FCNPC_OnDeath(npcid, killerid, weaponid)
 {
 	ZombieIsAttack[npcid] = 0;
@@ -174,6 +175,7 @@ public FCNPC_OnDeath(npcid, killerid, weaponid)
 	CallLocalFunction("OnPlayerKillZombie","ii",killerid,npcid);
 	return 1;
 }
+
 public FCNPC_OnTakeDamage(npcid, damagerid, weaponid, bodypart, Float:health_loss)
 {
 	new str[80];

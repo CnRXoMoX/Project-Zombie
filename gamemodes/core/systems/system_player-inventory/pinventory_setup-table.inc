@@ -3,12 +3,12 @@
 hook OnMySQLConnected()
 {
     static const query[] = "\
-    CREATE TABLE IF NOT EXISTS player_lootinv \
+    CREATE TABLE IF NOT EXISTS players_lootinv \
     ( \
         u_id INT(11) NOT NULL AUTO_INCREMENT, \
         slot INT(11) NOT NULL, \
         item_id INT(11) NOT NULL, \
-        PRIMARY KEY (u_id), \
+        UNIQUE KEY (u_id, slot), \
         FOREIGN KEY (u_id) REFERENCES players(u_id) \
         ON DELETE CASCADE \
         ON UPDATE RESTRICT \
