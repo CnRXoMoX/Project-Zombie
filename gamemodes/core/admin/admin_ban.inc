@@ -69,7 +69,7 @@ Ban_AddUser(playerid, byid = INVALID_PLAYER_ID, reason[], interval_type, bandura
     ;
     mysql_format(MySQL_GetHandle(), string, sizeof(string), query, playerName, playerIP, playerGCPI, reason, bannerName, banduration, interval);
 
-    Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin has banned", Logger_P("user", playerid), Logger_P("admin", byid));
+    Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin has banned", Logger_P(playerid), Logger_P(byid));
     return mysql_tquery(MySQL_GetHandle(), string);
 }
 
@@ -132,7 +132,7 @@ void:Ban_RemoveUser(username[], playerid = INVALID_PLAYER_ID)
         if(!cache_num_rows()) {
             if(playerid != INVALID_PLAYER_ID) {
                 SendServerMsgF(playerid, "The account "C_GREY"(%s) "C_WHITE"you're trying to unban is not in the database.", name);
-                Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin attempted to unban", Logger_P("admin", playerid), Logger_S("username", name));
+                Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin attempted to unban", Logger_P(playerid), Logger_S("username", name));
                 return;
             }
         }
@@ -141,7 +141,7 @@ void:Ban_RemoveUser(username[], playerid = INVALID_PLAYER_ID)
         mysql_tquery(MySQL_GetHandle(), string);
         if(playerid != INVALID_PLAYER_ID) {
             SendServerMsgF(playerid, "You successfully unbanned "C_GREY"%s's "C_WHITE"account.", name);
-            Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin has successfully unbanned", Logger_P("admin", playerid), Logger_S("username", name));
+            Logger_Dbg(ADMIN_DEBUG_HANDLER, "admin has successfully unbanned", Logger_P(playerid), Logger_S("username", name));
         }
     }
 

@@ -1,6 +1,7 @@
 #include <YSI_Coding\y_hooks>
 
 #define MAX_LOOT_NAME   (32)
+#define ITEM_EVENT_HANDLER_MAX_NAME     (64)
 #define MAX_ITEMS_ID    (sizeof(lootData))
 
 #define INVALID_ITEM_ID (-1)
@@ -10,17 +11,21 @@ enum E_LOOT_DATA
     E_LOOT_OBJECT,
     E_LOOT_SPAWN_PERCENT,
     E_LOOT_NAME[MAX_LOOT_NAME],
+    E_LOOT_CALLBACK[ITEM_EVENT_HANDLER_MAX_NAME]
 }
 
 new
     const lootData[][E_LOOT_DATA] =
 {
     // First Aid Kits
-    { 11747, 80, "Bandage" },
-    { 11738, 80, "Medkit" },
-    { 2709, 80, "Painkiller" },
-    { 1577, 80, "Antibiotics" },
-    { 11736, 80, "Morphine"}
+    { 11747, 80, "Bandage", "PlayerRequestToUseBandage" },
+    { 11738, 80, "Medkit", "PlayerRequestToUseMedkit" },
+    { 2709, 80, "Painkiller", "PlayerRequestToUsePainkiller" },
+    { 1577, 80, "Antibiotics", "PlayerRequestToUseAntibiotics" },
+    { 11736, 80, "Morphine", "PlayerRequestToUseMorphine" },
+
+    // bags
+    { 19559, 100, "Bag traveler", "PlayerRequestToUseBagTraveler" }
 };
 
 stock bool:IsValidItem(iId)
@@ -29,7 +34,29 @@ stock bool:IsValidItem(iId)
     {
         return false; 
     }
-    return true;
+    return true;    
+}
+
+stock GetEventHandlerFromIDEx(iId, string:iEventHolder[])
+{
+    if(!IsValidItem(iId)) {
+        Logger_Err("[loot-items] INVALID ITEM ID!", Logger_I("item id",  iId));
+        return 0;
+    }
+    strcpy(iEventHolder, lootData[iId][E_LOOT_CALLBACK], ITEM_EVENT_HANDLER_MAX_NAME);
+    return lootData[iId][E_LOOT_CALLBACK];
+}
+
+stock GetEventHandlerFromID(iId)
+{
+    new theEventHandler[ITEM_EVENT_HANDLER_MAX_NAME];
+    GetEventHandlerFromIDEx(iId, theEventHandler);
+    return theEventHandler;
+}
+
+stock PlayerUseItem(playerid, iId)
+{
+    CallLocalFunction(GetEventHandlerFromID(iId), "i", playerid);
 }
 
 stock GetItemIDFromName(const iname[])
@@ -44,13 +71,21 @@ stock GetItemIDFromName(const iname[])
     return INVALID_ITEM_ID;
 }
 
-stock GetItemNameFromID(iId)
+stock GetItemNameFromIDEx(iId, string:iName[])
 {
     if(!IsValidItem(iId)) {
         Logger_Err("[loot-items] IVALID ITEM ID!", Logger_I("item id", iId));
         return 0;
     }
-    return lootData[iId][E_LOOT_NAME];
+    strcpy(iName, lootData[iId][E_LOOT_NAME], MAX_LOOT_NAME);
+    return 1;
+}
+
+stock GetItemNameFromID(iId)
+{
+    new tmpString[MAX_LOOT_NAME];
+    GetItemNameFromIDEx(iId, tmpString);
+    return tmpString;
 }
 
 stock GetObjectIDFromID(iId)

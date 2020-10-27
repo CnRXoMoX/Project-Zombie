@@ -81,11 +81,13 @@
 				"gamemodes/core/systems",
 				"gamemodes/core/systems/system_loot",
 				"gamemodes/core/systems/system_player-inventory",
+				"gamemodes/core/systems/system_zombies",
 				"gamemodes/core/chat",
 				"gamemodes/core/admin",
 				"gamemodes/core/player",
 				"gamemodes/core/mappings",
-				"gamemodes/core/mappings/LV"
+				"gamemodes/core/mappings/LV",
+				"gamemodes/core/user-interface"
 			],
 			"constants": {
 				"DEV_BUILD": "1"

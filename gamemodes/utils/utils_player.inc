@@ -25,6 +25,17 @@ stock GetPlayerFPS(playerid) {
     return 0;
 }
 
+stock Float:GetXYInFrontOfPlayer(playerid, &Float:q, &Float:w, Float:distance)
+{
+    new Float:a;
+    GetPlayerPos(playerid, q, w, a);
+    if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER) GetVehicleZAngle(GetPlayerVehicleID(playerid), a);
+    else GetPlayerFacingAngle(playerid, a);
+    q += (distance * floatsin(-a, degrees));
+    w += (distance * floatcos(-a, degrees));
+    return a;
+}
+
 stock bool:RandomChance(percentage) {
 	return (percentage >= random(100) + 1);
 }

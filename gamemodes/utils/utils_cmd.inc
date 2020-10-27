@@ -40,6 +40,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
         return CallLocalFunction(prefix, "is", playerid, (params[0] != '\0') ? (params) :( "\1"));
     #endif
 }
+
 stock CommandExists(const cmd[])
 {
     static prefix[4] = {'c', 'm', 'd', '_'}, cmd_name[28];

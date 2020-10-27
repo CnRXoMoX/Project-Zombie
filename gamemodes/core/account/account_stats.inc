@@ -17,7 +17,7 @@ hook OnMySQLConnected()
 {
     static const insertQuery[] = "\
     INSERT INTO \
-        player_stats (u_id) \
+        players_stats (u_id) \
     VALUES \
         (?) \
     ";
@@ -30,7 +30,7 @@ hook OnMySQLConnected()
         coins, \
         score \
     FROM \
-        player_stats \
+        players_stats \
     WHERE \
         u_id = ? \
     ";

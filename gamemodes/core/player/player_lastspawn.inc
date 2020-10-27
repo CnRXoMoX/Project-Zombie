@@ -3,6 +3,7 @@
 static
     Float:gPlayerPos[MAX_PLAYERS][4],
     bool:gPlayerJustJoined[MAX_PLAYERS],
+    bool:gPlayerJustDied[MAX_PLAYERS], 
     Statement: stmt_playerSavePos,
     Statement: stmt_playerLoadPos,
     Statement: stmt_playerDeletePos
@@ -12,9 +13,9 @@ hook OnMySQLConnected()
 {
     static const query[] = "\
         INSERT INTO \
-            player_lastpos (u_id, posX, posY, posZ, posA, interior, worldid) \
+            players_lastpos (u_id, posX, posY, posZ, posA, interior, worldid) \
         VALUES \
-            (?,?,?,?,?,?) \
+            (?,?,?,?,?,?,?) \
         ";
     stmt_playerSavePos = MySQL_PrepareStatement(MySQL_GetHandle(), query);
 
@@ -25,7 +26,7 @@ hook OnMySQLConnected()
             posZ, \
             posA \
         FROM \
-            player_lastpos \
+            players_lastpos \
         WHERE \
             u_id = ? \
         ";
@@ -33,7 +34,7 @@ hook OnMySQLConnected()
 
     static const deleteQuery[] = "\
         DELETE FROM \
-            player_lastpos \
+            players_lastpos \
         WHERE \
             u_id = ? \
         ";
@@ -72,7 +73,14 @@ hook OnPlayerSpawn(playerid)
     {
         SetPlayerPos(playerid, gPlayerPos[playerid][0], gPlayerPos[playerid][1], gPlayerPos[playerid][2]);
         SetPlayerFacingAngle(playerid, gPlayerPos[playerid][3]);
+        gPlayerJustJoined[playerid] = false;
     }
+    return 1;
+}
+
+hook OnPlayerDeath(playerid, killerid, reason)
+{
+    gPlayerJustDied[playerid] = true;
     return 1;
 }
 
@@ -86,8 +94,9 @@ hook OnPlayerDisconnect(playerid, reason)
         MySQL_BindFloat(stmt_playerSavePos, 1, pos[0]);
         MySQL_BindFloat(stmt_playerSavePos, 2, pos[1]);
         MySQL_BindFloat(stmt_playerSavePos, 3, pos[2]);
-        MySQL_BindFloat(stmt_playerSavePos, 4, GetPlayerInterior(playerid));
-        MySQL_BindFloat(stmt_playerSavePos, 5, GetPlayerVirtualWorld(playerid));
+        MySQL_BindFloat(stmt_playerSavePos, 4, pos[3]);
+        MySQL_BindInt(stmt_playerSavePos, 5, GetPlayerInterior(playerid));
+        MySQL_BindInt(stmt_playerSavePos, 6, GetPlayerVirtualWorld(playerid));
         MySQL_ExecuteThreaded(stmt_playerSavePos);
     }
     return 1;

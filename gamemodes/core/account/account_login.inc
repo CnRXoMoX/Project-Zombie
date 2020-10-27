@@ -41,7 +41,7 @@ void:Account_PromptLogin(playerid, const password[], len = sizeof(password)) {
                     Kick(playerid);
 
                     Logger_Dbg(PLAYER_DEBUG_HANDLER, "player has been kicked for too many login attempts",
-                        Logger_P("username", playerid),
+                        Logger_P(playerid),
                         Logger_I("uid", Player_GetAccountID(playerid))
                     );
                     return;
@@ -52,19 +52,20 @@ void:Account_PromptLogin(playerid, const password[], len = sizeof(password)) {
 
                 Logger_Dbg(PLAYER_DEBUG_HANDLER, "player failed to login",
                     Logger_I("attemps", PlayerAttempts[playerid]),
-                    Logger_P("username", playerid),
+                    Logger_P(playerid),
                     Logger_I("uid", Player_GetAccountID(playerid))
                 );
                 return;
             }
 
             Logger_Dbg(PLAYER_DEBUG_HANDLER, "player successfully logged in",
-                Logger_P("username", playerid),
+                Logger_P(playerid),
                 Logger_I("uid", Player_GetAccountID(playerid))
             );
 
             PlayerAttempts[playerid] = 0;
             Account_NotifySuccess(playerid);
+            Player_SetLoginStatus(playerid, true);
             CallLocalFunction("OnPlayerLogin", "i", playerid);
             defer ForceSpawnPlayer(playerid);
         }

@@ -8,3 +8,10 @@
 #define SQL_DATE_FORMAT         "%d %M %Y"
 
 #define MAX_BAN_REASON 32
+
+#define PRESSED(%0) \
+    (((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
+
+
+/* DIALOG IDS */
+#define INVENTORY_DIALOG    (1)

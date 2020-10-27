@@ -4,6 +4,7 @@
 #define YSI_NO_OPTIMISATION_MESSAGE
 
 #define SETUP_TABLE     (true)
+#define MYSQL_PREPARE_DEBUG (false)
 
 #include <samp_bcrypt>
 #include <a_mysql>
@@ -11,7 +12,6 @@
 #include <YSI_Coding\y_va>
 #include <mysql_prepared>
 #include <logger>
-#include <fsutil>
 #include <formatex>
 #include <YSI_Data\y_iterate>
 #include <YSI_Coding\y_timers>
@@ -25,6 +25,7 @@
 #include <player>
 #include <chat>
 #include <admin>
+#include <user-interface>
 #include <systems>
 
 #include <mainmaps>
@@ -46,5 +47,17 @@ CMD:veh(playerid, params[])
     GetPlayerPos(playerid, pos[0], pos[1], pos[2]);
     veh = CreateVehicle(560, pos[0], pos[1], pos[2], 0, 0, 0, -1);
     PutPlayerInVehicle(playerid, veh, 0);
+    return 1;
+}
+
+CMD:goto(playerid, params[])
+{
+    SetPlayerPos(playerid, 2586.707275, 2772.758544, 9.795619);
+    return 1;
+}
+
+CMD:givemk(playerid, params[])
+{
+    GivePlayerItem(playerid, 1);
     return 1;
 }

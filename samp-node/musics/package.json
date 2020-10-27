@@ -1,5 +1,5 @@
 {
-  "name": "maploader",
+  "name": "musics",
   "version": "1.0.0",
   "description": "loading maps for samp",
   "main": "main.js",
@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/CnRXomoX/Project-Zombie#readme",
   "dependencies": {
+    "discord.js": "^12.4.1",
+    "fs": "0.0.1-security",
     "samp": "^1.0.0",
     "samp-node-lib": "^1.0.4"
   }

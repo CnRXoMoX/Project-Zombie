@@ -42,3 +42,5 @@ This is where we will put javascript for samp where can we load maps and loots
 |------|----------------------------------|
 | Southclaws |       Scavage and Survive  |
 | pawn-lang | The YSI_Includes helped through out the code so much |
+| iLearner  | For the iZombies            |
+| Ziggi     | For the FCNPC OFC           |

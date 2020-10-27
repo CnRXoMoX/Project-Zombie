@@ -79,3 +79,133 @@
 [25/10/2020 - 14:46:56] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
 [25/10/2020 - 14:46:56] -> [DEBUG]: node flags: node
 [25/10/2020 - 14:46:56] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[25/10/2020 - 18:25:53] -> [PLUGIN] samp-node plugin started...
+[25/10/2020 - 18:25:53] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[25/10/2020 - 18:25:53] -> [DEBUG]: node flags: node
+[25/10/2020 - 18:25:53] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[25/10/2020 - 19:05:35] -> [PLUGIN] samp-node plugin started...
+[25/10/2020 - 19:05:35] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[25/10/2020 - 19:05:35] -> [DEBUG]: node flags: node
+[25/10/2020 - 19:05:35] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[25/10/2020 - 19:19:00] -> [PLUGIN] samp-node plugin started...
+[25/10/2020 - 19:19:00] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[25/10/2020 - 19:19:00] -> [DEBUG]: node flags: node
+[25/10/2020 - 19:19:00] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[25/10/2020 - 19:22:52] -> [PLUGIN] samp-node plugin started...
+[25/10/2020 - 19:22:52] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[25/10/2020 - 19:22:52] -> [DEBUG]: node flags: node
+[25/10/2020 - 19:22:52] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 11:54:26] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 11:54:26] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 11:54:26] -> [DEBUG]: node flags: node
+[26/10/2020 - 11:54:26] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 11:54:27] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 11:54:27] -> [DEBUG]: node flags: node
+[26/10/2020 - 11:54:27] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 13:14:03] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 13:14:03] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 13:14:03] -> [DEBUG]: node flags: node
+[26/10/2020 - 13:14:03] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 13:14:04] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 13:14:04] -> [DEBUG]: node flags: node
+[26/10/2020 - 13:14:04] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 14:46:53] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 14:46:53] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 14:46:53] -> [DEBUG]: node flags: node
+[26/10/2020 - 14:46:53] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 14:46:54] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 14:46:54] -> [DEBUG]: node flags: node
+[26/10/2020 - 14:46:54] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 14:54:22] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 14:54:22] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 14:54:22] -> [DEBUG]: node flags: node
+[26/10/2020 - 14:54:22] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 14:54:22] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 14:54:22] -> [DEBUG]: node flags: node
+[26/10/2020 - 14:54:22] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 15:01:34] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 15:01:34] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 15:01:34] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:01:34] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 15:01:34] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 15:01:34] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:01:34] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 15:08:26] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 15:08:26] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 15:08:26] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:08:26] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 15:08:27] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 15:08:27] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:08:27] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[26/10/2020 - 15:23:12] -> [PLUGIN] samp-node plugin started...
+[26/10/2020 - 15:23:12] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[26/10/2020 - 15:23:12] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:23:12] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[26/10/2020 - 15:23:13] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[26/10/2020 - 15:23:13] -> [DEBUG]: node flags: node
+[26/10/2020 - 15:23:13] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:14:34] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:14:34] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:14:34] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:14:34] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 12:14:35] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:14:35] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:14:35] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:19:13] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:19:13] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:19:13] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:19:13] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 12:19:14] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:19:14] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:19:14] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:29:53] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:29:53] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:29:53] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:29:53] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 12:29:53] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:29:53] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:29:53] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:40:18] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:40:18] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:40:18] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:40:18] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 12:40:18] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:40:18] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:40:18] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:45:57] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:45:57] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:45:57] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:45:57] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 12:45:57] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:45:57] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:45:57] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:48:03] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:48:03] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:48:03] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:48:03] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:50:57] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:50:57] -> [INFO]: plugin is using ./samp-node/discord/resource-config.json config file
+[27/10/2020 - 12:50:57] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:50:57] -> [DEBUG]: node flags: ./samp-node/discord/main.js
+[27/10/2020 - 12:58:44] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 12:58:44] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 12:58:44] -> [DEBUG]: node flags: node
+[27/10/2020 - 12:58:44] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 13:02:17] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 13:02:17] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 13:02:17] -> [DEBUG]: node flags: node
+[27/10/2020 - 13:02:17] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 13:06:03] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 13:06:03] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 13:06:03] -> [DEBUG]: node flags: node
+[27/10/2020 - 13:06:03] -> [DEBUG]: node flags: ./samp-node/musics/test.js
+[27/10/2020 - 13:08:48] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 13:08:48] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 13:08:48] -> [DEBUG]: node flags: node
+[27/10/2020 - 13:08:48] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[27/10/2020 - 13:25:17] -> [PLUGIN] samp-node plugin started...
+[27/10/2020 - 13:25:17] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[27/10/2020 - 13:25:17] -> [DEBUG]: node flags: node
+[27/10/2020 - 13:25:17] -> [DEBUG]: node flags: .exit
+[27/10/2020 - 13:25:17] -> [DEBUG]: node flags: node ./samp-node/musics/main.js
+[27/10/2020 - 13:25:17] -> [DEBUG]: node flags: ./samp-node/musics/main.js
