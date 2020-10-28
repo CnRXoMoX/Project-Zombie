@@ -36,6 +36,13 @@ stock bool:IsItemPickupable(lootid) {
     return false;
 }
 
+stock bool:IsValidLoot(lootid) {
+    if(loot_Data[lootid][loot_id] != INVALID_LOOT_ID) {
+        return true;
+    }
+    return false;
+}
+
 stock CreateRandomLootItem(Float:x, Float:y, Float:z)
 {
     new lootDataID = GetRandomLoot();

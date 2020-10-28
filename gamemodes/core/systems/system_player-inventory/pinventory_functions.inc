@@ -97,6 +97,7 @@ hook OnPlayerLogin(playerid)
         while(MySQL_Statement_FetchRow(stmt_loadItems)) {
             GivePlayerItemInSlot(playerid, itemID, slot);
             gPlayerLoots[playerid]++;
+            gPlayerJustLoggedIn[playerid] = true;
         }
     }
     MySQL_BindInt(stmt_loadItems, 0, Player_GetAccountID(playerid));

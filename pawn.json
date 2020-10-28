@@ -87,7 +87,9 @@
 				"gamemodes/core/player",
 				"gamemodes/core/mappings",
 				"gamemodes/core/mappings/LV",
-				"gamemodes/core/user-interface"
+				"gamemodes/core/user-interface",
+				"gamemodes/core/systems/system_loot/loots",
+				"gamemodes/core/systems/system_loot/loots/LV"
 			],
 			"constants": {
 				"DEV_BUILD": "1"

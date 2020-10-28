@@ -1,4 +1,3 @@
-#include <pinventory_functions>
 #include <pinventory_bag>
 #include <pinventory_showinv>
 #if SETUP_TABLE

@@ -1,26 +1,5 @@
 #include <YSI_Coding\y_hooks>
 
-forward RequestToSeeNearbyLoots(playerid, listitem);
-public RequestToSeeNearbyLoots(playerid, listitem)
-{
-    new tmpString[24];
-    format(tmpString, sizeof(tmpString), "NearbyLoots_%i", listitem);
-    new lootID = GetPVarInt(playerid, tmpString);
-    new itemID = loot_Data[lootID][loot_itemID];
-
-    if(!IsValidItem(itemID)) {
-        Logger_Log("[loot-pickup]: Invalid Loot ID selection", 
-            Logger_I("Loot ID", lootID),
-            Logger_P(playerid));
-        return 0;
-    }
-
-    DeleteLoot(lootID);
-    GivePlayerItem(playerid, itemID);
-    ShowPlayerClosestLoots(playerid);
-    return 1;
-}
-
 hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
     if(PRESSED(KEY_NO)) 
@@ -32,11 +11,12 @@ hook OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 ShowPlayerClosestLoots(playerid)
 {
-    new
+    new 
         count = 0,
-        tmpString[100]
+        tmpString[100],
+        originalString[512]
     ;
-    TextMenu_Create(playerid, "RequestToSeeNearbyLoots", "~b~Nearby loots");
+    
     foreach(new i : gLootIter)
     {
         new Float:x, Float:y, Float:z;
@@ -47,19 +27,44 @@ ShowPlayerClosestLoots(playerid)
                     Logger_I("Loot ID", i));
                 continue;
             }
-            print("player is near a loot");
             new ItemID = loot_Data[i][loot_itemID];
-            format(tmpString, sizeof(tmpString), "~w~%s", GetItemNameFromID(ItemID));
-            TextMenu_Add(playerid, tmpString);
-            format(tmpString, sizeof(tmpString), "NearbyLoots_%i", count);
+            if(count == 0) {
+                format(tmpString, sizeof(tmpString), "%s", GetItemNameFromID(ItemID));
+            } else {
+                format(tmpString, sizeof(tmpString), "\n%s", GetItemNameFromID(ItemID));
+            }
+            strcat(originalString, tmpString);
+            format(tmpString, sizeof(tmpString), "NearbyLoot_%i", count);
             SetPVarInt(playerid, tmpString, i);
             count++;
-            printf("Loots counted near player %d", count);
         }
+        if(count == 10) break;
     }
+
+    inline OnPlayerPickupNearbyLoots(pid, dialogid, response, listitem, string:inputtext[]) {
+        #pragma unused pid, dialogid, inputtext
+        if(!response) return 1;
+
+        if(!PlayerHasAvailableBagSlot(playerid)) return SendErrorMsg(playerid, "You have full items!");
+        format(tmpString, sizeof(tmpString), "NearbyLoot_%i", listitem);
+        new lootID = GetPVarInt(playerid, tmpString);
+        new itemID = loot_Data[lootID][loot_itemID];
+
+        if(!IsValidItem(itemID)) {
+            Logger_Log("[loot-pickup]: Invalid Loot ID selection", 
+                Logger_I("Loot ID", lootID),
+                Logger_P(playerid));
+            return 1;
+        }
+        
+        GivePlayerItem(playerid, itemID);
+        DeleteLoot(lootID);
+        ShowPlayerClosestLoots(playerid);
+    }
+    
     if(count != 0) {
-        print("Showing the player now");
-        TextMenu_Show(playerid);
+        format(tmpString, sizeof(tmpString), "Nearby loots %d", count);
+        Dialog_ShowCallback(playerid, using inline OnPlayerPickupNearbyLoots, DIALOG_STYLE_LIST, tmpString, originalString, "Pickup", "Close");
     }
     return 1;
 }
