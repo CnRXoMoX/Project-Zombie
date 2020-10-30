@@ -7,3 +7,12 @@ forward OnPlayerRequestToUseMorphine(playerid);
 
 /* BAGS */
 forward OnPlayerRequestToUseBagTraveler(playerid);
+
+/* OTHERS */
+forward OnPlayerRequestToUseGPS(playerid);
+
+public OnPlayerRequestToUseGPS(playerid)
+{
+    SendServerMsg(playerid, "This is for you to see the map");
+    return 1;
+}

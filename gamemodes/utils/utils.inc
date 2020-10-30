@@ -3,6 +3,7 @@
 #include <utils_vsync>
 #include <utils_vehicle>
 #include <utils_player>
+#include <utils_math>
 
 #include <YSI_Coding\y_hooks>
 

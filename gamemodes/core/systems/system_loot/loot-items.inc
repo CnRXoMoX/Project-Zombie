@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-#define MAX_LOOT_NAME   (32)
+#define MAX_LOOT_NAME   32
 #define ITEM_EVENT_HANDLER_MAX_NAME     (64)
 #define MAX_ITEMS_ID    (sizeof(lootData))
 
@@ -24,8 +24,11 @@ new
     { 1577, 80, "Antibiotics", "OnPlayerRequestToUseAntibiotics" },
     { 11736, 80, "Morphine", "OnPlayerRequestToUseMorphine" },
 
-    // bags
-    { 19559, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" }
+    // Bags
+    { 19559, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" },
+
+    // Others
+    { 18875, 100, "GPS", "OnPlayerRequestToUseGPS" }
 };
 
 stock bool:IsValidItem(iId)

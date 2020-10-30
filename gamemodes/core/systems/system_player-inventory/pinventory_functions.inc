@@ -140,8 +140,8 @@ stock GivePlayerItem(playerid, iId)
             Logger_S("Function", "GivePlayerItem"));
         return 0;
     }
+    if(!PlayerHasAvailableBagSlot(playerid)) return INVALID_SLOT_ID;
     new freebagslot = Iter_Free(gBagSlots[playerid]);
-    if(freebagslot > Player_GetBagSlots(playerid)) return INVALID_SLOT_ID;
     Iter_Add(gBagSlots[playerid], freebagslot);
     printf("%d", freebagslot);
     gPlayerItemInSlot[playerid][freebagslot] = iId;
@@ -177,4 +177,14 @@ stock RemovePlayerItemInSlot(playerid, slotid, bool:drop = false)
     }
     gPlayerItemInSlot[playerid][slotid] = INVALID_ITEM_ID;
     return 1;
+}
+
+stock IsPlayerHaveItem(playerid, iId) {
+    foreach(new i : gBagSlots[playerid])
+    {
+        if(gPlayerItemInSlot[playerid][i] == iId) {
+            return 1;
+        }
+    }
+    return 00;
 }

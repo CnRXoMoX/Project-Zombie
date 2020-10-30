@@ -4,6 +4,7 @@
 #define YSI_NO_OPTIMISATION_MESSAGE
 
 #define SETUP_TABLE     (true)
+#define MAX_STATEMENTS  (100)
 #define MYSQL_PREPARE_DEBUG (false)
 
 #include <samp_bcrypt>
@@ -63,12 +64,6 @@ CMD:veh(playerid, params[])
 CMD:goto(playerid, params[])
 {
     SetPlayerPos(playerid, 2586.707275, 2772.758544, 9.795619);
-    return 1;
-}
-
-CMD:givemk(playerid, params[])
-{
-    GivePlayerItem(playerid, 1);
     return 1;
 }
 
