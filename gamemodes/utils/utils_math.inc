@@ -7,3 +7,8 @@ stock Float:frandom(Float:min, Float:max)
 stock randomEx(min, max) {
     return (random(max)+min);
 }
+
+stock floatToInteger(Float:thefloat) {
+	new result = floatround(thefloat, floatround_round);
+	return result;
+}

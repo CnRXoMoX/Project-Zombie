@@ -16,3 +16,9 @@ public OnPlayerRequestToUseGPS(playerid)
     SendServerMsg(playerid, "This is for you to see the map");
     return 1;
 }
+
+public OnPlayerRequestToUseBagTraveler(playerid)
+{
+    GivePlayerBag(playerid, 3);    
+    return 1;
+}

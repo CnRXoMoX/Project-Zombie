@@ -25,7 +25,7 @@ new
     { 11736, 80, "Morphine", "OnPlayerRequestToUseMorphine" },
 
     // Bags
-    { 19559, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" },
+    { 11745, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" },
 
     // Others
     { 18875, 100, "GPS", "OnPlayerRequestToUseGPS" }

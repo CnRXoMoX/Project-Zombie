@@ -20,19 +20,22 @@
 		"kristoisberg/samp-map-zones",
 		"maddinat0r/samp-discord-connector:v0.3.2",
 		"AmyrAhmady/samp-node:1.1.0",
-		"Southclaws/samp-fsutil:1.3.0"
+		"Southclaws/samp-fsutil:1.3.0",
+		"ziggi/FCNPC:v2.0.2"
 	],
 	"local": true,
 	"runtime": {
 		"version": "0.3.7",
 		"mode": "server",
 		"echo": "-",
+		"filterscripts": [
+			"ntd"
+		],
 		"rcon_password": "password",
 		"port": 7777,
 		"hostname": "SA-MP Server",
 		"maxplayers": 50,
 		"language": "",
-		"filterscripts": ["ntd"],
 		"mapname": "San Andreas",
 		"weburl": "www.sa-mp.com",
 		"gamemodetext": "Unknown",
@@ -42,7 +45,7 @@
 		"rcon": false,
 		"logqueries": false,
 		"sleep": 5,
-		"maxnpc": 0,
+		"maxnpc": 20,
 		"stream_rate": 1000,
 		"stream_distance": 200,
 		"onfoot_rate": 30,
@@ -84,6 +87,8 @@
 				"gamemodes/core/systems/system_player-inventory",
 				"gamemodes/core/systems/system_zombies",
 				"gamemodes/core/systems/system_vehicle",
+				"gamemodes/core/systems/system_food",
+				"gamemodes/core/systems/system_thirst",
 				"gamemodes/core/chat",
 				"gamemodes/core/admin",
 				"gamemodes/core/player",

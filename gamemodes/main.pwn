@@ -26,8 +26,8 @@
 #include <player>
 #include <chat>
 #include <admin>
-#include <user-interface>
 #include <systems>
+#include <user-interface>
 
 #include <mainmaps>
 
@@ -38,6 +38,11 @@ public OnGameModeInit()
 	SendRconCommand("language "SERVER_LANGUAGE"");
     SendRconCommand("weburl "SERVER_WEBSITE"");
     Logger_Log("Test?");
+    return 1;
+}
+
+public OnPlayerSpawn(playerid)
+{
     return 1;
 }
 
@@ -71,7 +76,7 @@ CMD:giveitem(playerid, params[])
 {
     new lootName[MAX_LOOT_NAME];
     if(sscanf(params, "s[32]", lootName)) return SendSyntaxMsg(playerid, "/giveitem (item name)");
-    if(strlen(lootName) > MAX_LOOT_NAME) return SendErrorMsgF(playerid, "loot name is supposed to be %d", MAX_LOOT_NAME);
+    if(strlen(lootName) > MAX_LOOT_NAME) return SendErrorMsgF(playerid, "loot name is supposed to be %d letters", MAX_LOOT_NAME);
     new itemID = GetItemIDFromName(lootName);
     printf("%d", itemID);
     if(!IsValidItem(itemID)) return SendErrorMsgF(playerid, "The item %s does not exist!", lootName);

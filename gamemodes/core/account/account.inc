@@ -37,6 +37,7 @@ hook OnPlayerPassedBanCheck(playerid)
 
         if(MySQL_Statement_FetchRow(stmt_checkPlayer)) {
             Player_SetAccountID(playerid, playerUID);
+            CallLocalFunction("OnPlayerHasAccount", "i", playerid);
             Account_PromptLogin(playerid, playerHash);
         } else {
             Account_PromptRegister(playerid);

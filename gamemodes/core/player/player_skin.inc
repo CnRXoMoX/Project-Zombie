@@ -1,11 +1,16 @@
 #include <YSI_Coding\y_hooks>
 
+#define MAX_SKIN_NAME   (32)
+#define INVALID_SKIN_ID (-1)
+
 static 
-    gPlayerSkin[MAX_PLAYERS]
+    gPlayerSkin[MAX_PLAYERS],
+    bool:gPlayerHasSavedSkin[MAX_PLAYERS]
 ;
 
 static
-    Statement: stmt_playerSaveSkin
+    Statement: stmt_playerSaveSkin,
+    Statement: stmt_playerLoadSkin
 ;
 
 hook OnMySQLConnected()
@@ -19,6 +24,33 @@ hook OnMySQLConnected()
         u_id = ? \
     ";
     stmt_playerSaveSkin = MySQL_PrepareStatement(MySQL_GetHandle(), query);
+
+    static const loadQuery[] = "\
+    SELECT \
+        skin \
+    FROM \
+        players_stats \
+    WHERE \
+        u_id = ? \
+    ";
+    stmt_playerLoadSkin = MySQL_PrepareStatement(MySQL_GetHandle(), loadQuery);
+    return 1;
+}
+
+hook OnPlayerHasAccount(playerid) 
+{
+    inline OnDataLoad() {
+        new
+            skin;
+        MySQL_BindResultInt(stmt_playerLoadSkin, 0, skin);
+
+        if(MySQL_Statement_FetchRow(stmt_playerLoadSkin)) {
+            gPlayerSkin[playerid] = skin;
+            gPlayerHasSavedSkin[playerid] = true;
+        }
+    }
+    MySQL_BindInt(stmt_playerLoadSkin, 0,  Player_GetAccountID(playerid));
+    MySQL_ExecuteParallel_Inline(stmt_playerLoadSkin, using inline OnDataLoad);
     return 1;
 }
 
@@ -34,14 +66,12 @@ Player_SetSkin(playerid, skinid, bool:save = true) {
 
 Player_GetSkin(playerid) return gPlayerSkin[playerid];
 
-#define MAX_SKIN_NAME   (32)
-
 /* SKINS */
 enum E_RANDOM_SKINS_DATA
 {
     E_RAND_SKIN_NAME[MAX_PLAYERS],
     E_RAND_SKIN_ID,
-    E_SKIN_GENDER
+    Gender:E_SKIN_GENDER
 };
 
 static 
@@ -54,3 +84,32 @@ static
     { "Downtown Guy", 60, MALE},
     { "Cracker", 144, MALE}
 };
+
+stock GetRandSkin()
+{
+    new rand = random(sizeof(randSkinData));
+    return randSkinData[rand][E_RAND_SKIN_ID];
+}
+
+stock GetPlayerSkinName(playerid) {
+    new skinDataId;
+    for(new i = 0; i < sizeof(randSkinData); i++) 
+    {
+        if(gPlayerSkin[playerid] == randSkinData[i][E_RAND_SKIN_ID])
+        {
+            return randSkinData[i][E_RAND_SKIN_NAME];
+        }
+    }
+    return INVALID_SKIN_ID;
+}
+
+hook OnPlayerSpawn(playerid)
+{
+    if(Player_New(playerid) || IsPlayerJustDied(playerid)) {
+        Player_SetSkin(playerid, GetRandSkin(), true);
+    } else if(gPlayerHasSavedSkin[playerid]) {
+        gPlayerHasSavedSkin[playerid] = false;
+        Player_SetSkin(playerid, Player_GetSkin(playerid));
+    }
+    return 1;
+}

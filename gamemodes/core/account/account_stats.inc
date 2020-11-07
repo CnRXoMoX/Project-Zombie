@@ -9,8 +9,7 @@ static
     gPlayerScore[MAX_PLAYERS],
     gPlayerKills[MAX_PLAYERS],
     gPlayerDeaths[MAX_PLAYERS],
-    gPlayerCoins[MAX_PLAYERS],
-    gPlayerSkin[MAX_PLAYERS]
+    gPlayerCoins[MAX_PLAYERS]
 ;
 
 hook OnMySQLConnected()
@@ -73,7 +72,6 @@ hook OnPlayerLogin(playerid)
 stock Player_GetKills(playerid) return gPlayerKills[playerid];
 stock Player_GetDeaths(playerid) return gPlayerDeaths[playerid];
 stock Player_GetScore(playerid) return gPlayerScore[playerid];
-stock Player_GetSkin(playerid) return gPlayerSkin[playerid];
 
 stock Player_SetKills(playerid, value, bool:save = true)
 {
@@ -176,25 +174,4 @@ stock Player_TakeCoins(playerid, value)
 {
     new totalCoins = gPlayerCoins[playerid] - value;
     Player_SetCoins(playerid, totalCoins);
-}
-
-stock Player_SetSkin(playerid, skin, bool:setskin = true, bool:save = true)
-{
-    new string[256];
-    gPlayerSkin[playerid] = skin;
-    if(save) {
-        static const query[] = "\
-        UPDATE \
-            player_stats \
-        SET \
-            skin = %d \
-        WHERE \
-            u_id = %d \
-        ";
-        mysql_format(MySQL_GetHandle(), string, sizeof string, query, skin, Player_GetAccountID(playerid));
-        mysql_tquery(MySQL_GetHandle(), string);
-    }
-    if(setskin) {
-        SetPlayerSkin(playerid, skin);
-    }
 }

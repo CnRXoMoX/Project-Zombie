@@ -1,7 +1,8 @@
 #include <YSI_Coding\y_hooks>
 
 static
-    Float:gPlayerPos[MAX_PLAYERS][4],
+    Float:gPlayerLastPos[MAX_PLAYERS][4],
+    bool:gPlayerHasSavedPos[MAX_PLAYERS],
     bool:gPlayerJustJoined[MAX_PLAYERS],
     bool:gPlayerJustDied[MAX_PLAYERS], 
     Statement: stmt_playerSavePos,
@@ -63,38 +64,45 @@ hook MySQLPreClose()
     return 1;
 }
 
-hook OnPlayerLogin(playerid)
+hook OnPlayerConnect(playerid)
 {
-    inline const OnPosLoad()
-    {   
-        new 
-            Float:pos[4];
-        MySQL_BindResultFloat(stmt_playerLoadPos, 0, pos[0]);
-        MySQL_BindResultFloat(stmt_playerLoadPos, 1, pos[1]);
-        MySQL_BindResultFloat(stmt_playerLoadPos, 2, pos[2]);
-        MySQL_BindResultFloat(stmt_playerLoadPos, 3, pos[3]);
-        
+    gPlayerHasSavedPos[playerid] = false;
+    gPlayerJustJoined[playerid] = false;
+    gPlayerJustDied[playerid] = false; 
+    return 1;
+}
+
+hook OnPlayerHasAccount(playerid)
+{
+    inline OnDataLoad()
+    {
+        new
+            Float:tempPos[4];
+        MySQL_BindResultFloat(stmt_playerLoadPos, 0, tempPos[0]);
+        MySQL_BindResultFloat(stmt_playerLoadPos, 1, tempPos[1]);
+        MySQL_BindResultFloat(stmt_playerLoadPos, 2, tempPos[2]);
+        MySQL_BindResultFloat(stmt_playerLoadPos, 3, tempPos[3]);
+
         if(MySQL_Statement_FetchRow(stmt_playerLoadPos)) {
-            gPlayerPos[playerid][0] = pos[0];
-            gPlayerPos[playerid][1] = pos[1];
-            gPlayerPos[playerid][2] = pos[2];
-            gPlayerPos[playerid][3] = pos[3];
-            gPlayerJustJoined[playerid] = true;
-            Player_DeleteSavedPos(playerid);
+            gPlayerLastPos[playerid][0] = tempPos[0];
+            gPlayerLastPos[playerid][1] = tempPos[1];
+            gPlayerLastPos[playerid][2] = tempPos[2];
+            gPlayerLastPos[playerid][3] = tempPos[3];
+            gPlayerHasSavedPos[playerid] = true;
         }
     }
     MySQL_BindInt(stmt_playerLoadPos, 0, Player_GetAccountID(playerid));
-    MySQL_ExecuteThreaded_Inline(stmt_playerLoadPos, using inline OnPosLoad);
+    MySQL_ExecuteParallel_Inline(stmt_playerLoadPos, using inline OnDataLoad);
     return 1;
 }
 
 hook OnPlayerSpawn(playerid)
 {
-    if(!Player_New(playerid) && gPlayerJustJoined[playerid])
-    {
-        SetPlayerPos(playerid, gPlayerPos[playerid][0], gPlayerPos[playerid][1], gPlayerPos[playerid][2]);
-        SetPlayerFacingAngle(playerid, gPlayerPos[playerid][3]);
-        gPlayerJustJoined[playerid] = false;
+    if(gPlayerHasSavedPos[playerid]) {
+        defer playerSpawnLastPos(playerid);
+    }
+    if(IsPlayerJustDied(playerid)) {
+        defer justDiedTimer(playerid);
     }
     return 1;
 }
@@ -126,4 +134,19 @@ hook OnPlayerDisconnect(playerid, reason)
 Player_DeleteSavedPos(playerid) {
     MySQL_BindInt(stmt_playerDeletePos, 0, Player_GetAccountID(playerid));
     MySQL_ExecuteThreaded(stmt_playerDeletePos);
+}
+
+timer justDiedTimer[500](playerid) {
+    gPlayerJustDied[playerid] = false;
+}
+
+timer playerSpawnLastPos[500](playerid) {
+    SetPlayerPos(playerid, gPlayerLastPos[playerid][0], gPlayerLastPos[playerid][1], gPlayerLastPos[playerid][2]);
+    SetPlayerFacingAngle(playerid, gPlayerLastPos[playerid][3]);
+    Player_DeleteSavedPos(playerid);
+    gPlayerHasSavedPos[playerid] = false;
+}
+
+IsPlayerJustDied(playerid) {
+    return gPlayerJustDied[playerid];
 }

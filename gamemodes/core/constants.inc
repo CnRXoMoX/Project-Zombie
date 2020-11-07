@@ -15,3 +15,9 @@
 
 /* DIALOG IDS */
 #define INVENTORY_DIALOG    (1)
+
+enum Gender
+{
+    FEMALE = 0,
+    MALE
+};

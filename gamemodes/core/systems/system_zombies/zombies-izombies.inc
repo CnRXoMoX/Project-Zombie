@@ -1,7 +1,6 @@
-#include <a_samp>
-#include <fcnpc>
-#include <YSI\y_timers>
+#include <FCNPC>
 #include <mapandreas>
+#include <YSI_Coding\y_hooks>
 
 new Float:ZombieSpawns[][4] = 
 {
@@ -122,7 +121,8 @@ new Float:ZombieSpawns[][4] =
 {1298.1548,2083.4016,10.8127,256.7034}, //  Baseball stadium 2
 {1117.8785,2304.1514,10.8203,81.5490}
 };
-PlayAnim(playerid, animlib[], animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync)
+
+PlayAnim(playerid, const animlib[], const animname[], Float:fDelta, loop, lockx, locky, freeze, time, forcesync)
 {
 	ApplyAnimation(playerid, animlib, animname, fDelta, loop, lockx, locky, freeze, time, forcesync);
 }
@@ -130,10 +130,9 @@ PlayAnim(playerid, animlib[], animname[], Float:fDelta, loop, lockx, locky, free
 #define MAX_ZOMBIES 20 // change this to whatever number you want
 new SpawnedZombies=0, ZombiesTimer, IsAZombie[MAX_PLAYERS], Text3D:ZombieLabel[MAX_PLAYERS], Timer:ZombieTimer[MAX_PLAYERS], ZombieIsAttack[MAX_PLAYERS];
 
-public OnFilterScriptInit()
+hook OnGameModeInit()
 {
 	MapAndreas_Init(MAP_ANDREAS_MODE_FULL);
-	FCNPC_InitMapAndreas(MapAndreas_GetAddress());
 	ZombiesTimer = SetTimer("CreateZombies", 50, true);
 	return 1;
 }
@@ -142,7 +141,7 @@ forward CreateZombies();
 public CreateZombies()
 {	
 	new str[50]; //objects[7];
-	new Random = random(sizeof(ZombieSpawns));
+	new rand = random(sizeof(ZombieSpawns));
 	if(SpawnedZombies < MAX_ZOMBIES)
 	{
 		
@@ -151,7 +150,7 @@ public CreateZombies()
 		thenpc_ = FCNPC_Create(str);
 		ZombieLabel[thenpc_] = Create3DTextLabel("[Zombie]\nHealth: 100", -1, 30.0, 40.0, 50.0, 60.0, -1, 0);
 		Attach3DTextLabelToPlayer(ZombieLabel[thenpc_], thenpc_, 0.0, 0.0, 0.4); 	
-		FCNPC_Spawn(thenpc_,241,ZombieSpawns[Random][0],ZombieSpawns[Random][1],ZombieSpawns[Random][2]);
+		FCNPC_Spawn(thenpc_,241,ZombieSpawns[rand][0],ZombieSpawns[rand][1],ZombieSpawns[rand][2]);
 		FCNPC_SetWeapon(thenpc_, 1);
 		FCNPC_SetHealth(thenpc_, 100);
 		ZombieTimer[thenpc_] = repeat ZombieMove(thenpc_);
@@ -168,7 +167,7 @@ public CreateZombies()
 	return 1;
 }
 
-public FCNPC_OnDeath(npcid, killerid, weaponid)
+public FCNPC_OnDeath(npcid, killerid, reason)
 {
 	ZombieIsAttack[npcid] = 0;
 	PlayAnim(npcid, "PED", "BIKE_fall_off", 4.1, 0, 1, 1, 1, 0, 1);
@@ -176,24 +175,26 @@ public FCNPC_OnDeath(npcid, killerid, weaponid)
 	return 1;
 }
 
-public FCNPC_OnTakeDamage(npcid, damagerid, weaponid, bodypart, Float:health_loss)
+public FCNPC_OnTakeDamage(npcid, issuerid, Float:amount, weaponid, bodypart)
 {
 	new str[80];
 	format(str, sizeof str, "[Zombie]\nHealth: %.2f",FCNPC_GetHealth(npcid));
 	Update3DTextLabelText(ZombieLabel[npcid], -1, str);	
 	return 1;
 }
+
 timer ZombieMove[500](zombieid)
 {
 	new Float:xa,Float:ya,Float:za;
 	if(FCNPC_IsDead(zombieid)) return 1;
-	foreach(Player, playerid)
+	foreach(new playerid : Player)		
 	{
 		GetPlayerPos(playerid,xa,ya,za);
 		if(IsPlayerInRangeOfPoint(zombieid,1.0,xa,ya,za))// here playerid not zombieid
 		{
 			ZombieIsAttack[zombieid] = 2;
 			FCNPC_MeleeAttack(zombieid,100);
+			CallLocalFunction("OnPlayerTakeZombieDamage", "ii", playerid, zombieid);
 			break;
 		}
 		else if(IsPlayerInRangeOfPoint(zombieid,10.0,xa,ya,za))
@@ -204,7 +205,7 @@ timer ZombieMove[500](zombieid)
 				FCNPC_StopAttack(zombieid);
 			}
 			ZombieIsAttack[zombieid] = 1;
-			FCNPC_GoTo(zombieid,xa,ya,za,MOVE_TYPE_RUN,0.4, true);
+			FCNPC_GoTo(zombieid, xa, ya, za, FCNPC_MOVE_TYPE_RUN, 0.4, true);
 			break;
 		}
 		else if(IsPlayerInRangeOfPoint(zombieid,25.0,xa,ya,za))
@@ -215,7 +216,7 @@ timer ZombieMove[500](zombieid)
 				FCNPC_StopAttack(zombieid);
 			}
 			ZombieIsAttack[zombieid] = 1;
-			FCNPC_GoToPlayerEx(zombieid, playerid,5,5,MOVE_TYPE_RUN);
+			FCNPC_GoToPlayerEx(zombieid, playerid, 5, 5, FCNPC_MOVE_TYPE_RUN);
 			break;
 		}
 		else
@@ -225,7 +226,8 @@ timer ZombieMove[500](zombieid)
 	}
 	return 1;
 }
-stock FCNPC_GoToPlayerEx(npcid, playerid, Float:dist, Float:rangle, movetype = MOVE_TYPE_RUN)
+
+stock FCNPC_GoToPlayerEx(npcid, playerid, Float:dist, Float:rangle, movetype = FCNPC_MOVE_TYPE_RUN)
 {
 	new Float:xa, Float:ya, Float:za, Float:fa;
 	GetPlayerPos(playerid, xa, ya, za);
@@ -236,6 +238,7 @@ stock FCNPC_GoToPlayerEx(npcid, playerid, Float:dist, Float:rangle, movetype = M
     FCNPC_GoTo(npcid,xa,ya,za,movetype,0.4, true);
     return 1;
 }
+
 forward OnPlayerKillZombie(playerid, zombieid);
 public OnPlayerKillZombie(playerid,zombieid)
 {
@@ -245,12 +248,13 @@ public OnPlayerKillZombie(playerid,zombieid)
 			
 	return 1;
 }
+
 public FCNPC_OnRespawn(npcid)
 {
-	new Random = random(sizeof(ZombieSpawns));
+	new rand = random(sizeof(ZombieSpawns));
 	FCNPC_SetWeapon(npcid,1);
 	FCNPC_ApplyAnimation(npcid, "PED", "WALK_DRUNK", 4.1, 1, 1,  1,  0,  0);	
 	FCNPC_SetAmmo(npcid,1);
-	FCNPC_SetPosition(npcid,ZombieSpawns[Random][0],ZombieSpawns[Random][1],ZombieSpawns[Random][2]);
+	FCNPC_SetPosition(npcid,ZombieSpawns[rand][0],ZombieSpawns[rand][1],ZombieSpawns[rand][2]);
 	return 1;
 }

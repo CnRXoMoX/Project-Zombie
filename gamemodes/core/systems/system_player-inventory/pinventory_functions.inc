@@ -63,13 +63,7 @@ hook OnPlayerConnect(playerid)
 
 hook OnPlayerDisconnect(playerid, reason)
 {
-    new count = 0;
-    foreach(new i : Player)
-    {
-        if(count == MAX_BAG_SLOTS) break;
-        Iter_Remove(gBagSlots[playerid], i);
-        count++;
-    }
+    Iter_Clear(gBagSlots[playerid]);
     return 1;
 }
 
