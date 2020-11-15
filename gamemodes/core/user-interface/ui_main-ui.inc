@@ -15,6 +15,12 @@ static
     PlayerText:zombiesKilledCounter[MAX_PLAYERS]
 ;
 
+static
+    timeLeftCounter[MAX_PLAYERS],
+    playerHoursPlayed[MAX_PLAYERS],
+    Timer:timeLeftTimer[MAX_PLAYERS]
+;
+
 hook OnPlayerConnect(playerid)
 {    
     PlayerNameTD[playerid] = CreatePlayerTextDraw(playerid, 554.000000, 20.000000, "XomoX_Test");
@@ -212,14 +218,11 @@ hook OnPlayerConnect(playerid)
     PlayerTextDrawUseBox(playerid, weaponHolder[playerid], 0);
     PlayerTextDrawSetProportional(playerid, weaponHolder[playerid], 1);
     PlayerTextDrawSetSelectable(playerid, weaponHolder[playerid], 0);
+
+    timeLeftCounter[playerid] = 0;
+    playerHoursPlayed[playerid] = 0;
     return 1;
 }
-
-static
-    timeLeftCounter[MAX_PLAYERS],
-    playerHoursPlayed[MAX_PLAYERS],
-    Timer:timeLeftTimer[MAX_PLAYERS]
-;
 
 static
     Statement: stmt_intertPlayTime,

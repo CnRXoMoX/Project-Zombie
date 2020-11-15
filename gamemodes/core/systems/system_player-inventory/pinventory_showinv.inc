@@ -70,7 +70,8 @@ ShowPlayerInventory(playerid)
     if(count != 0) {
         format(tmpString, sizeof(tmpString), "Inventory (%d:%d)", count, Player_GetBagSlots(playerid));
         Dialog_ShowCallback(playerid, using inline OnPlayerSelectInInv, DIALOG_STYLE_LIST, tmpString, originalString, "Use", "Close");
-
+    } else {
+        SendServerMsg(playerid, "You don't have any items!");
     }
     return 1;
 }

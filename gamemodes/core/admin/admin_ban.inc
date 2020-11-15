@@ -194,7 +194,6 @@ void:Ban_CheckUser(playerid)
                 Kick(playerid);
             }
         } else {
-            print("Player isn't banned");
             CallLocalFunction("OnPlayerPassedBanCheck", "i", playerid);
         }
     }

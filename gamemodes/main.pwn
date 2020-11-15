@@ -5,7 +5,7 @@
 
 #define SETUP_TABLE     (true)
 #define MAX_STATEMENTS  (100)
-#define MYSQL_PREPARE_DEBUG (false)
+#define MYSQL_PREPARE_DEBUG (true)
 
 #include <samp_bcrypt>
 #include <a_mysql>
@@ -78,7 +78,6 @@ CMD:giveitem(playerid, params[])
     if(sscanf(params, "s[32]", lootName)) return SendSyntaxMsg(playerid, "/giveitem (item name)");
     if(strlen(lootName) > MAX_LOOT_NAME) return SendErrorMsgF(playerid, "loot name is supposed to be %d letters", MAX_LOOT_NAME);
     new itemID = GetItemIDFromName(lootName);
-    printf("%d", itemID);
     if(!IsValidItem(itemID)) return SendErrorMsgF(playerid, "The item %s does not exist!", lootName);
     if(!PlayerHasAvailableBagSlot(playerid)) return SendErrorMsg(playerid, "You don't have any available bag slots");
     GivePlayerItem(playerid, itemID);

@@ -1,5 +1,5 @@
 #include <YSI_Coding\y_hooks>
-#define MAX_BAG_SLOTS           (64)
+#define MAX_BAG_SLOTS           (50)
 
 #define INVALID_SLOT_ID         (-1)
 
@@ -137,7 +137,6 @@ stock GivePlayerItem(playerid, iId)
     if(!PlayerHasAvailableBagSlot(playerid)) return INVALID_SLOT_ID;
     new freebagslot = Iter_Free(gBagSlots[playerid]);
     Iter_Add(gBagSlots[playerid], freebagslot);
-    printf("%d", freebagslot);
     gPlayerItemInSlot[playerid][freebagslot] = iId;
     MySQL_BindInt(stmt_insertItem, 0, Player_GetAccountID(playerid));
     MySQL_BindInt(stmt_insertItem, 1, freebagslot);

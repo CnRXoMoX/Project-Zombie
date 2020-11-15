@@ -251,10 +251,13 @@ public OnPlayerKillZombie(playerid,zombieid)
 
 public FCNPC_OnRespawn(npcid)
 {
-	new rand = random(sizeof(ZombieSpawns));
-	FCNPC_SetWeapon(npcid,1);
-	FCNPC_ApplyAnimation(npcid, "PED", "WALK_DRUNK", 4.1, 1, 1,  1,  0,  0);	
-	FCNPC_SetAmmo(npcid,1);
-	FCNPC_SetPosition(npcid,ZombieSpawns[rand][0],ZombieSpawns[rand][1],ZombieSpawns[rand][2]);
+	if(IsAZombie[npcid])
+	{		
+		new rand = random(sizeof(ZombieSpawns));
+		FCNPC_SetWeapon(npcid,1);
+		FCNPC_ApplyAnimation(npcid, "PED", "WALK_DRUNK", 4.1, 1, 1,  1,  0,  0);	
+		FCNPC_SetAmmo(npcid,1);
+		FCNPC_SetPosition(npcid,ZombieSpawns[rand][0],ZombieSpawns[rand][1],ZombieSpawns[rand][2]);
+		}
 	return 1;
 }

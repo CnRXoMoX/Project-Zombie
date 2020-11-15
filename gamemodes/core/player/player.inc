@@ -1,6 +1,7 @@
 #include <player_lastspawn>
 #include <player_skin>
 #include <player_packages>
+#include <player_spawns>
 
 #if SETUP_TABLE
     #include <player_setup-lastpos>

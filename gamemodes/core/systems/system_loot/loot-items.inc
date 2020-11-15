@@ -25,7 +25,11 @@ new
     { 11736, 80, "Morphine", "OnPlayerRequestToUseMorphine" },
 
     // Bags
-    { 11745, 100, "Bag traveler", "OnPlayerRequestToUseBagTraveler" },
+    { 3026, 80, "Small backpack", "OnPlayerRequestToUseSmallBP" },
+    { 11745, 70, "Medium Backpack", "OnPlayerRequestToUseMediumBP" },
+    { 1310, 70, "Travel bag", "OnPlayerRequestToUseTravelBag" },
+    { 19559, 70, "CZech Backpack", "OnPlayerRequestToUseCZBP" },
+    { 19944, 50, "Assault Backpack", "OnPlayerRequestToUseAssaulBP"},
 
     // Others
     { 18875, 100, "GPS", "OnPlayerRequestToUseGPS" }
