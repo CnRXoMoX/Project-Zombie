@@ -5,7 +5,7 @@
 
 #define SETUP_TABLE     (true)
 #define MAX_STATEMENTS  (100)
-#define MYSQL_PREPARE_DEBUG (true)
+#define MYSQL_PREPARE_DEBUG (false)
 
 #include <samp_bcrypt>
 #include <a_mysql>
@@ -25,6 +25,7 @@
 #include <account>
 #include <player>
 #include <chat>
+#include <cmds-main>
 #include <admin>
 #include <systems>
 #include <user-interface>
@@ -51,11 +52,6 @@ public OnPlayerDisconnect(playerid, reason)
     return 1;
 }
 
-public OnPlayerText(playerid, text[])
-{
-    return 1;
-}
-
 CMD:veh(playerid, params[])
 {
     new veh;
@@ -69,17 +65,5 @@ CMD:veh(playerid, params[])
 CMD:goto(playerid, params[])
 {
     SetPlayerPos(playerid, 2586.707275, 2772.758544, 9.795619);
-    return 1;
-}
-
-CMD:giveitem(playerid, params[])
-{
-    new lootName[MAX_LOOT_NAME];
-    if(sscanf(params, "s[32]", lootName)) return SendSyntaxMsg(playerid, "/giveitem (item name)");
-    if(strlen(lootName) > MAX_LOOT_NAME) return SendErrorMsgF(playerid, "loot name is supposed to be %d letters", MAX_LOOT_NAME);
-    new itemID = GetItemIDFromName(lootName);
-    if(!IsValidItem(itemID)) return SendErrorMsgF(playerid, "The item %s does not exist!", lootName);
-    if(!PlayerHasAvailableBagSlot(playerid)) return SendErrorMsg(playerid, "You don't have any available bag slots");
-    GivePlayerItem(playerid, itemID);
     return 1;
 }

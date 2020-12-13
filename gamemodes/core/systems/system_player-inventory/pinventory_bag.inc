@@ -58,7 +58,7 @@ hook OnPlayerLogin(playerid)
         MySQL_BindResultInt(stmt_playerBagLoad, 0, bag);
 
         if(MySQL_Statement_FetchRow(stmt_playerBagLoad)) {
-            gPlayerBagLvl[playerid] = bag;
+            GivePlayerBag(playerid, bag, false);
             gPlayerHasSavedBag[playerid] = true;
         }
     }
@@ -127,14 +127,16 @@ stock GivePlayerBagObject(playerid, lvl) {
     }
 }
 
-stock GivePlayerBag(playerid, lvl) {
+stock GivePlayerBag(playerid, lvl, bool:save = true) {
     GivePlayerBagObject(playerid, lvl);
     gPlayerBagLvl[playerid] = lvl;
     gPlayerBagSlots[playerid] = GetBagSlots(lvl);
-    MySQL_BindInt(stmt_playerBagSave, 0, Player_GetAccountID(playerid));
-    MySQL_BindInt(stmt_playerBagSave, 1, lvl);
-    MySQL_BindInt(stmt_playerBagSave, 2, lvl);
-    MySQL_ExecuteThreaded(stmt_playerBagSave);
+    if(save) {
+        MySQL_BindInt(stmt_playerBagSave, 0, Player_GetAccountID(playerid));
+        MySQL_BindInt(stmt_playerBagSave, 1, lvl);
+        MySQL_BindInt(stmt_playerBagSave, 2, lvl);
+        MySQL_ExecuteThreaded(stmt_playerBagSave);
+    }
 }
 
 stock Player_GetBagSlots(playerid) return gPlayerBagSlots[playerid];

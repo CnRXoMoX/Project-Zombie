@@ -179,5 +179,5 @@ stock IsPlayerHaveItem(playerid, iId) {
             return 1;
         }
     }
-    return 00;
+    return 0;
 }

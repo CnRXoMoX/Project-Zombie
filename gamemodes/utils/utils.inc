@@ -12,3 +12,5 @@ hook OnGameModeInit()
     Logger_Log("[GAMEMODE]: utils loaded");
     return 1;
 }
+
+#define ERROR_PLAYER_NOT_CONNECTED  "Player is not connected"

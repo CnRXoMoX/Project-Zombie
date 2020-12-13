@@ -28,9 +28,6 @@
 		"version": "0.3.7",
 		"mode": "server",
 		"echo": "-",
-		"filterscripts": [
-			"ntd"
-		],
 		"rcon_password": "password",
 		"port": 7777,
 		"hostname": "SA-MP Server",
@@ -90,6 +87,7 @@
 				"gamemodes/core/systems/system_food",
 				"gamemodes/core/systems/system_thirst",
 				"gamemodes/core/chat",
+				"gamemodes/core/cmds",
 				"gamemodes/core/admin",
 				"gamemodes/core/player",
 				"gamemodes/core/mappings",

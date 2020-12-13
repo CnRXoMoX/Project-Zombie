@@ -63,6 +63,7 @@ stock Account_InsertToDatabase(playerid, const hash[]) {
         CallLocalFunction("OnPlayerRegister", "i", playerid);
         Player_SetNew(playerid, true);
         defer ForceSpawnPlayer(playerid);
+        Player_SetLoginStatus(playerid, true);
         SendServerMsgF(playerid, msg_content, playerid);
     }
 

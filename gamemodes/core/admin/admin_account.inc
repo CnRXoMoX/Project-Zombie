@@ -1,6 +1,9 @@
 #include <YSI_Coding\y_hooks>
 //#include <YSI_Data\y_bits>
 
+#define MAX_ADMIN_LEVELS    5
+
+
 enum 
 {
     ADM_LVL_1 = 1,

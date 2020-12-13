@@ -209,3 +209,7 @@
 [27/10/2020 - 13:25:17] -> [DEBUG]: node flags: .exit
 [27/10/2020 - 13:25:17] -> [DEBUG]: node flags: node ./samp-node/musics/main.js
 [27/10/2020 - 13:25:17] -> [DEBUG]: node flags: ./samp-node/musics/main.js
+[13/12/2020 - 15:52:03] -> [PLUGIN] samp-node plugin started...
+[13/12/2020 - 15:52:03] -> [INFO]: plugin is using ./samp-node/musics/resource-config.json config file
+[13/12/2020 - 15:52:03] -> [DEBUG]: node flags: node
+[13/12/2020 - 15:52:03] -> [DEBUG]: node flags: ./samp-node/musics/test.js

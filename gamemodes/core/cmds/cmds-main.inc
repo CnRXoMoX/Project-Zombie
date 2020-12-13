@@ -1,3 +1,8 @@
+#include <cmds-radio>
+#include <cmds-shout>
+#include <cmds-whisper>
+#include <cmds-pm>
+
 static 
     cmd_Cooldown[MAX_PLAYERS],
     cmd_Count[MAX_PLAYERS]
