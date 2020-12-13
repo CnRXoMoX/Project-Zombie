@@ -58,7 +58,7 @@ hook OnPlayerLogin(playerid)
         MySQL_BindResultInt(stmt_playerBagLoad, 0, bag);
 
         if(MySQL_Statement_FetchRow(stmt_playerBagLoad)) {
-            GivePlayerBag(playerid, bag, false);
+            gPlayerBagLvl[playerid] = bag;
             gPlayerHasSavedBag[playerid] = true;
         }
     }
