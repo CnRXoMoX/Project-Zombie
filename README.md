@@ -37,6 +37,18 @@ This is where we will put javascript for samp where can we load maps and loots
 |------|----------------------------------|
 |XomoX |Of course me LOL the most handsome developer|
 
+# Mappers
+| Name |          Mapping                 |
+|------|----------------------------------|
+| Wolf |  This is for the SF Mapping (Didn't added it)|
+| Slash|  For the LV Mapping              |
+
+## Discords
+
+Wolf#1193
+XomoX#8227
+Saksham#4563 (Slash)
+
 # Credits
 | Name |           Library                |
 |------|----------------------------------|
